@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "/subscribers")
 public class SubscriberController {
@@ -20,6 +22,12 @@ public class SubscriberController {
         return subscriber;
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody
+    public List<Subscriber> getAll(){
+       return subscriberService.getAllSubscribers();
+    }
+
     @RequestMapping(value = "/{email:.+}",method = RequestMethod.GET)
     @ResponseBody
     public Subscriber getByEmail(@PathVariable String email){
@@ -27,8 +35,10 @@ public class SubscriberController {
     }
 
     @RequestMapping(value = "/deleteAll",method = RequestMethod.GET)
-    public void deleteAll(){
+    @ResponseBody
+    public List<Subscriber> deleteAll(){
         subscriberService.delete();
+        return subscriberService.getAllSubscribers();
     }
 
 

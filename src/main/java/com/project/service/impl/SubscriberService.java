@@ -5,6 +5,8 @@ import com.project.repository.SubscriberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SubscriberService {
 
@@ -25,6 +27,10 @@ public class SubscriberService {
     public Subscriber read(String email) {
         Subscriber subscriber = subscriberRepository.findByEmail(email);
         return subscriber;
+    }
+
+    public List<Subscriber> getAllSubscribers(){
+      return subscriberRepository.findAll();
     }
 
     public void delete() {

@@ -1,10 +1,15 @@
 package com.project.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Category {
-
+    @Id
     private String code;
+
     private String title;
+
     private String superCategoryCode;
 
     public String getCode() {

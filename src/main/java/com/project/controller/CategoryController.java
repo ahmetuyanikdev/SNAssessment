@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "/categories")
 public class CategoryController {
@@ -21,9 +23,17 @@ public class CategoryController {
         return category;
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody
+    public List<Category> getAll(){
+      return categoryService.getAllCategories();
+    }
+
     @RequestMapping(value = "/deleteAll",method = RequestMethod.GET)
-    public void deleteAll(){
+    @ResponseBody
+    public List<Category> deleteAll(){
         categoryService.deleteAll();
+        return categoryService.getAllCategories();
     }
 
     @RequestMapping(value = "/{code}",method = RequestMethod.GET)
