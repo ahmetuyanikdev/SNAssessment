@@ -42,7 +42,7 @@ public class NewsLetterController {
             NewsLetter newsLetter = new NewsLetter();
             newsLetter.setRecipient(s.getEmail());
             for(String categoryCode : s.getCategoryCodes()){
-                String path = categoryCode.concat("-");
+                String path = categoryCode;
                 generateNotifications(categoryCode,notifications,path);
             }
             newsLetter.setNotifications(notifications);
@@ -52,6 +52,9 @@ public class NewsLetterController {
     }
 
     public void generateNotifications(String currentCategory, List<Notification> notifications, String pathQueue){
+        if(!pathQueue.equals(currentCategory)){
+            pathQueue = pathQueue.concat("-").concat(currentCategory);
+        }
         List<Book> books = bookService.getAllMatchingBooks(currentCategory);
         for(Book b : books){
             Notification notification = new Notification();
@@ -60,7 +63,6 @@ public class NewsLetterController {
             notification.setCategoryPaths(paths);
             notifications.add(notification);
         }
-        pathQueue = pathQueue.concat("-").concat(currentCategory);
         List<Category> subCategories = categoryService.findSubCategories(currentCategory);
         for (Category c : subCategories){
             generateNotifications(c.getCode(),notifications,pathQueue);
