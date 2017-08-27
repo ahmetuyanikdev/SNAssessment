@@ -1,7 +1,7 @@
 package com.project.controller;
 
 import com.project.model.Book;
-import com.project.service.impl.BookService;
+import com.project.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,20 +20,20 @@ public class BookController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public Book save(@RequestBody Book book){
+    public Book save(@RequestBody Book book) {
         bookService.save(book);
         return book;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public List<Book> getAll(){
+    public List<Book> getAll() {
         return bookService.getAllBooks();
     }
 
-    @RequestMapping(value = "/deleteAll",method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteAll", method = RequestMethod.GET)
     @ResponseBody
-    public List<Book> deleteAll(){
+    public List<Book> deleteAll() {
         bookService.deleteAll();
         return bookService.getAllBooks();
     }
