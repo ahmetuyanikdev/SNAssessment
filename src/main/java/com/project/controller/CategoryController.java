@@ -2,7 +2,7 @@ package com.project.controller;
 
 
 import com.project.model.Category;
-import com.project.service.impl.CategoryService;
+import com.project.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

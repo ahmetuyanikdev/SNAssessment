@@ -1,4 +1,4 @@
-package com.project.service.impl;
+package com.project.service;
 
 import com.project.model.Subscriber;
 import com.project.repository.SubscriberRepository;
@@ -29,8 +29,8 @@ public class SubscriberService {
         return subscriber;
     }
 
-    public List<Subscriber> getAllSubscribers(){
-      return subscriberRepository.findAll();
+    public List<Subscriber> getAllSubscribers() {
+        return subscriberRepository.findAll();
     }
 
     public void delete() {

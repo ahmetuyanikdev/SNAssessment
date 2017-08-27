@@ -1,4 +1,4 @@
-package com.project.service.impl;
+package com.project.service;
 
 import com.project.model.Book;
 import com.project.repository.BookRepository;
@@ -13,20 +13,20 @@ public class BookService {
     @Autowired
     BookRepository bookRepository;
 
-    public Book save(Book book){
+    public Book save(Book book) {
         bookRepository.save(book);
         return book;
     }
 
-    public List<Book> getAllMatchingBooks(String categoryCode){
-       return bookRepository.findByCategoryCodes(categoryCode);
+    public List<Book> getAllMatchingBooks(String categoryCode) {
+        return bookRepository.findByCategoryCodes(categoryCode);
     }
 
-    public List<Book> getAllBooks(){
+    public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
-    public void deleteAll(){
+    public void deleteAll() {
         bookRepository.deleteAll();
     }
 
